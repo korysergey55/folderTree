@@ -17,6 +17,11 @@
           cursor: pointer;
         }
       }
+      .icon {
+        display: inline-block;
+        margin-right: 5px;
+        transform: rotate(0deg);
+      }
     }
   }
   .active {
@@ -26,8 +31,10 @@
     .ul {
       color: blue;
       .itemNode {
-        .nodeContainer {
-          display: block;
+        .icon {
+          margin-right: 5px;
+          color: chartreuse;
+          transform: rotate(180deg);
         }
       }
     }
