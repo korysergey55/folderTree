@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1112px;
+  margin: 0 auto;
+  padding: 20px 15px;
+
+  .ul {
+    list-style: none;
+    .itemNode {
+      .nodeContainer {
+        display: block;
+        font-size: 18px;
+        font-weight: 500;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .active {
+    font-size: 18px;
+    font-weight: 500;
+    color: blue;
+    .ul {
+      color: blue;
+      .itemNode {
+        .nodeContainer {
+          display: block;
+        }
+      }
+    }
+  }
+}
