@@ -1,54 +1,72 @@
 import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretRight, faCaretDown } from '@fortawesome/free-solid-svg-icons'
-import styles from './styles.module.scss'
 import IFolderData from 'models/index'
+import styles from './styles.module.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons'
+import cn from 'classnames'
 
 interface IPropsTree {
   data: IFolderData[]
+  openedItems?: string[] | []
+  onChange?: (id: string) => void
 }
-interface IPropsTreeNode {
-  node: IFolderData
-}
-const Tree: React.FC<IPropsTree> = ({ data = [] }) => {
+
+const Tree: React.FC<IPropsTree> = ({ data = [], openedItems, onChange }) => {
   return (
     <div className={styles.container}>
       <ul className={styles.ul}>
         {data.map((item: any) => (
-          <TreeNode node={item} key={item.key} />
+          <TreeNode
+            node={item}
+            key={item.key}
+            openedItems={openedItems}
+            onChange={onChange}
+          />
         ))}
       </ul>
     </div>
   )
 }
-
-const TreeNode: React.FC<any> = ({ node }) => {
-  const [childVisible, setChildVisiblity] = useState(false)
+// interface IPropsTreeNode {
+//   node: IFolderData
+// }
+const TreeNode: React.FC<any> = ({ node, openedItems, onChange }) => {
   const hasChild = node.children && node.children.length !== 0 ? true : false
 
-  const onChangeVisible = () => {
-    if (hasChild) {
-      setChildVisiblity(!childVisible)
-    }
+  const isVisible = () => {
+    const activeItem = openedItems.find((item: any) => item === node.key)
+    return activeItem
   }
+  const visible = isVisible()
 
   return (
-    <li className={styles.itemNode}>
+    <li className={styles.li}>
       <div
-        className={childVisible ? styles.active : styles.nodeContainer}
-        onClick={onChangeVisible}
+        className={visible ? styles.active : styles.nodeContainer}
+        onClick={() => {
+          if (hasChild) {
+            onChange(node)
+          }
+        }}
       >
-        <p className={styles.title}>
+        <p
+          className={cn(styles.title, {
+            [styles.hasChild]: hasChild,
+          })}
+        >
           {hasChild && (
-            <FontAwesomeIcon
-              icon={faCaretRight}
-              className={styles.icon}
-            />
+            <FontAwesomeIcon icon={faCaretRight} className={styles.icon} />
           )}
           {node.label}
         </p>
       </div>
-      {hasChild && childVisible && <Tree data={node.children} />}
+      {hasChild && visible && (
+        <Tree
+          data={node.children}
+          openedItems={openedItems}
+          onChange={onChange}
+        />
+      )}
     </li>
   )
 }
