@@ -1,26 +1,57 @@
 import React, { useEffect, useState } from 'react'
+import IFolderData from 'models/index'
+import treeData from 'utils/folderData'
 import Header from 'components/Header'
 import Tree from '../Tree'
+import Content from '../Content'
 import styles from './styles.module.scss'
-import treeData from 'utils/folderData'
 
 const TreeList = () => {
-  const [openedFolder, setOpenedFolder] = useState<string[]>([])
-
-  const onChange = (node: any) => {
-    const dublicate = openedFolder.find(el => el === node.key)
-    if (dublicate) {
-      const togleFolder = openedFolder.filter(el => el !== node.key)
-      setOpenedFolder([...togleFolder])
-    } else {
-      setOpenedFolder(prev => [...prev, node.key])
+  const [content, setContent] = useState('')
+  const [openedFolder, setOpenedFolder] = useState<string[]>(() => {
+    const items: any = localStorage.getItem('openedFolders')
+    if (items) {
+      const parsedItems: any = JSON.parse(items)
+      return parsedItems
     }
+    return []
+  })
+
+  useEffect(() => {
+    setContent('')
+  }, [openedFolder])
+  
+  const onChangeContent = (node: IFolderData) => {
+    setContent(node.label)
+  }
+
+  const onChange = (key: string) => {
+    let arr = [...openedFolder]
+    const index = arr.indexOf(key)
+    if (index !== -1) {
+      arr.splice(index, 1)
+    } else {
+      arr = [...arr, key]
+    }
+    setOpenedFolder(arr)
+    localStorage.setItem('openedFolders', JSON.stringify(arr))
   }
 
   return (
-    <div className={styles.section}>
+    <div>
       <Header title="Tree Visualization component" />
-      <Tree data={treeData} openedItems={openedFolder} onChange={onChange} />
+      <div className={styles.containerTreeList}>
+        <div className={styles.wripper}>
+          <Tree
+            data={treeData}
+            openedItems={openedFolder}
+            onChange={onChange}
+            content={content}
+            onChangeContent={onChangeContent}
+          />
+        </div>
+        {content && <Content title={content} />}
+      </div>
     </div>
   )
 }

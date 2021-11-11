@@ -1,7 +1,13 @@
-.container {
+.containerTreeList {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   max-width: 1112px;
   margin: 0 auto;
   padding: 20px 15px;
+
+  .wripper {
+    max-width: 255px;
+    overflow-x: auto;
+  }
 }

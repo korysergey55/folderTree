@@ -1,10 +1,11 @@
 import { createContext, useContext } from 'react'
 import { configure, observable } from 'mobx'
+import ItemsStore from './items'
 
 configure({ enforceActions: 'observed' })
 
 class RootStore {
-  // @observable usersStore = usersStore
+  @observable ItemsStore = ItemsStore
 }
 
 const rootStore = new RootStore()

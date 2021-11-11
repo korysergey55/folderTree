@@ -1,0 +1,13 @@
+.contentContainer {
+  display: block;
+  min-width: 300px;
+  min-height: 300px;
+  padding: 10px;
+  border: 1px solid blue;
+
+  .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: red;
+  }
+}

@@ -1,0 +1,69 @@
+.nodeItem {
+  display: block;
+
+  .innerContainer {
+    transition: max-height 0.8s ease-in;
+    max-height: 0px;
+    overflow: hidden;
+
+    &.visible {
+      max-height: 1000px;
+    }
+  }
+  .node {
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    .title {
+      margin-bottom: 0;
+
+      &:hover {
+        cursor: pointer;
+      }
+      .icon {
+        display: inline-block;
+        margin-right: 7px;
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    }
+    .activeTitle {
+      color: rgb(43, 255, 0);
+    }
+  }
+}
+.active {
+  font-size: 18px;
+  font-weight: 500;
+
+  .node {
+    color: blue;
+    .title {
+      margin-bottom: 0px;
+      .icon {
+        margin-right: 7px;
+        color: blue;
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
+
+// animation: keyframOpasity 1s ease-in-out;
+// animation: keyframHeight 1s ease-in-out;
+// @keyframes keyframOpasity {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes keyframHeight {
+//   from {
+//     height: 0;
+//   }
+//   to {
+//     height: 100%;
+//   }
+// }

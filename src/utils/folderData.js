@@ -39,6 +39,42 @@ const treeData = [
       {
         key: uuidv4(),
         label: 'documennt-2.doc',
+        children: [
+          {
+            key: uuidv4(),
+            label: 'Document-0-1.doc',
+          },
+          {
+            key: uuidv4(),
+            label: 'Document-0-2.doc',
+          },
+          {
+            key: uuidv4(),
+            label: 'Document-0-3.doc',
+          },
+          {
+            key: uuidv4(),
+            label: 'Document-0-4.doc',
+            children: [
+              {
+                key: uuidv4(),
+                label: 'Document-0-1.doc',
+              },
+              {
+                key: uuidv4(),
+                label: 'Document-0-2.doc',
+              },
+              {
+                key: uuidv4(),
+                label: 'Document-0-3.doc',
+              },
+              {
+                key: uuidv4(),
+                label: 'Document-0-4.doc',
+              },
+            ],
+          },
+        ],
       },
     ],
   },

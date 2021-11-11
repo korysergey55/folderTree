@@ -15,7 +15,7 @@ const App = () => {
         <Switch>
           <PrivateRoute exact path="/private" component={HomePage} />
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/tree" component={TreeList} />
+          <Route exact path="/folderTree" component={TreeList} />
         </Switch>
         {/* <Loader/> */}
       </Router>
