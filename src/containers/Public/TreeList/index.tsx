@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import IFolderData from 'models/index'
 import treeData from 'utils/folderData'
 import Header from 'components/Header'
@@ -7,7 +7,14 @@ import Content from '../Content'
 import styles from './styles.module.scss'
 
 const TreeList = () => {
-  const [content, setContent] = useState('')
+  const [content, setContent] = useState<IFolderData | null>(() => {
+    const items: any = localStorage.getItem('activeTitle')
+    if (items) {
+      const parsedItems: any = JSON.parse(items)
+      return parsedItems
+    }
+    return null
+  })
   const [openedFolder, setOpenedFolder] = useState<string[]>(() => {
     const items: any = localStorage.getItem('openedFolders')
     if (items) {
@@ -17,12 +24,9 @@ const TreeList = () => {
     return []
   })
 
-  useEffect(() => {
-    setContent('')
-  }, [openedFolder])
-  
   const onChangeContent = (node: IFolderData) => {
-    setContent(node.label)
+    setContent(node)
+    localStorage.setItem('activeTitle', JSON.stringify(node))
   }
 
   const onChange = (key: string) => {
@@ -35,6 +39,7 @@ const TreeList = () => {
     }
     setOpenedFolder(arr)
     localStorage.setItem('openedFolders', JSON.stringify(arr))
+    setContent(null)
   }
 
   return (
@@ -45,12 +50,12 @@ const TreeList = () => {
           <Tree
             data={treeData}
             openedItems={openedFolder}
-            onChange={onChange}
             content={content}
+            onChange={onChange}
             onChangeContent={onChangeContent}
           />
         </div>
-        {content && <Content title={content} />}
+        {content && <Content title={content.label} />}
       </div>
     </div>
   )

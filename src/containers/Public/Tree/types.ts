@@ -1,4 +1,4 @@
-export  interface IFolderData {
+export interface IFolderData {
   key: string
   label: string
   children?: IFolderData[]
@@ -6,7 +6,7 @@ export  interface IFolderData {
 
 export interface ICommon {
   openedItems: string[]
+  content: IFolderData | null
   onChange: (id: string) => void
-  content: string
   onChangeContent: (value: IFolderData) => void
 }

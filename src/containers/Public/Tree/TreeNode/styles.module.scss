@@ -10,39 +10,34 @@
       max-height: 1000px;
     }
   }
-  .node {
-    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    .title {
-      margin-bottom: 0;
-
-      &:hover {
-        cursor: pointer;
+  .nodeContainer {
+    .node {
+      transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      .title {
+        margin-bottom: 0;
+        &:hover {
+          cursor: pointer;
+        }
+        .icon {
+          display: inline-block;
+          margin-right: 7px;
+          transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
       }
-      .icon {
-        display: inline-block;
-        margin-right: 7px;
-        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-        transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      .activeTitle {
+        color: rgb(43, 255, 0);
       }
     }
-    .activeTitle {
-      color: rgb(43, 255, 0);
-    }
-  }
-}
-.active {
-  font-size: 18px;
-  font-weight: 500;
-
-  .node {
-    color: blue;
-    .title {
-      margin-bottom: 0px;
-      .icon {
-        margin-right: 7px;
+    &.active {
+      .node {
         color: blue;
-        transform: rotate(90deg);
+        .title {
+          .icon {
+            color: blue;
+            transform: rotate(90deg);
+          }
+        }
       }
     }
   }

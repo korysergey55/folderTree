@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-import { observer } from 'mobx-react'
-import { useStore } from 'stores'
+import React from 'react'
 import { IFolderData } from '../types'
 import { ICommon } from '../types'
 import Tree from '..'
@@ -12,10 +10,8 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons'
 interface IPropsTreeNode extends ICommon {
   node: IFolderData
 }
-const TreeNode: React.FC<IPropsTreeNode> = observer(({ node, ...common }) => {
-  const [activeTitle, setActiveTitle] = useState<boolean>(false)
-  const { ItemsStore } = useStore()
-  const { openedItems, onChange, onChangeContent } = common
+const TreeNode: React.FC<IPropsTreeNode> = ({ node, ...common }) => {
+  const { openedItems,content, onChange, onChangeContent } = common
   const hasChild = node.children && node.children.length ? true : false
 
   const isVisible = () => {
@@ -24,17 +20,13 @@ const TreeNode: React.FC<IPropsTreeNode> = observer(({ node, ...common }) => {
   }
   const visible = isVisible()
 
-  const onChangeActiveTitle = (node: IFolderData) => {
-    if (!hasChild) {
-      ItemsStore.setTitleId(node.key)
-      setActiveTitle(!activeTitle)
-    }
-  }
-
   return (
     <li className={styles.nodeItem}>
       <div
-        className={visible ? styles.active : styles.nodeContainer}
+        className={cn({
+          [styles.nodeContainer]: true,
+          [styles.active]: visible,
+        })}
         onClick={() => {
           if (node.children) {
             onChange(node.key)
@@ -46,9 +38,8 @@ const TreeNode: React.FC<IPropsTreeNode> = observer(({ node, ...common }) => {
         <div className={styles.node}>
           <p
             className={cn(styles.title, {
-              [styles.activeTitle]: activeTitle,
+              [styles.activeTitle]: content?.key === node.key,
             })}
-            onClick={() => onChangeActiveTitle(node)}
           >
             {hasChild && (
               <FontAwesomeIcon icon={faCaretRight} className={styles.icon} />
@@ -68,5 +59,5 @@ const TreeNode: React.FC<IPropsTreeNode> = observer(({ node, ...common }) => {
       )}
     </li>
   )
-})
+}
 export default TreeNode

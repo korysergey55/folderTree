@@ -11,6 +11,7 @@ import {
 
 class ItemsStore {
   @observable titleId: string = ''
+  @observable activeTitle: boolean = false
 
   constructor() {
     makeAutoObservable(this)
@@ -21,6 +22,9 @@ class ItemsStore {
   }
   @action setTitleId(data: string) {
     this.titleId = data
+  }
+  @action setActiveTitle() {
+    this.activeTitle = !this.activeTitle
   }
 }
 
