@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/folderTree/static/css/main.4636ead4.chunk.css",
+    "main.js": "/folderTree/static/js/main.f714eb73.chunk.js",
+    "main.js.map": "/folderTree/static/js/main.f714eb73.chunk.js.map",
+    "runtime-main.js": "/folderTree/static/js/runtime-main.56dc0c98.js",
+    "runtime-main.js.map": "/folderTree/static/js/runtime-main.56dc0c98.js.map",
+    "static/css/2.5cc265e8.chunk.css": "/folderTree/static/css/2.5cc265e8.chunk.css",
+    "static/js/2.712fe91e.chunk.js": "/folderTree/static/js/2.712fe91e.chunk.js",
+    "static/js/2.712fe91e.chunk.js.map": "/folderTree/static/js/2.712fe91e.chunk.js.map",
+    "index.html": "/folderTree/index.html",
+    "precache-manifest.5c9a55bf6928c8d28b0f2aabe9d57588.js": "/folderTree/precache-manifest.5c9a55bf6928c8d28b0f2aabe9d57588.js",
+    "service-worker.js": "/folderTree/service-worker.js",
+    "static/css/2.5cc265e8.chunk.css.map": "/folderTree/static/css/2.5cc265e8.chunk.css.map",
+    "static/css/main.4636ead4.chunk.css.map": "/folderTree/static/css/main.4636ead4.chunk.css.map",
+    "static/js/2.712fe91e.chunk.js.LICENSE.txt": "/folderTree/static/js/2.712fe91e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.56dc0c98.js",
+    "static/css/2.5cc265e8.chunk.css",
+    "static/js/2.712fe91e.chunk.js",
+    "static/css/main.4636ead4.chunk.css",
+    "static/js/main.f714eb73.chunk.js"
+  ]
+}
