@@ -11,7 +11,7 @@ interface IPropsTreeNode extends ICommon {
   node: IFolderData
 }
 const TreeNode: React.FC<IPropsTreeNode> = ({ node, ...common }) => {
-  const { openedItems,content, onChange, onChangeContent } = common
+  const { openedItems, content, onChange, onChangeContent } = common
   const hasChild = node.children && node.children.length ? true : false
 
   const isVisible = () => {
@@ -22,8 +22,7 @@ const TreeNode: React.FC<IPropsTreeNode> = ({ node, ...common }) => {
 
   return (
     <li className={styles.nodeItem}>
-      <div
-        className={cn({
+      <div  className={cn({
           [styles.nodeContainer]: true,
           [styles.active]: visible,
         })}
@@ -36,8 +35,7 @@ const TreeNode: React.FC<IPropsTreeNode> = ({ node, ...common }) => {
         }}
       >
         <div className={styles.node}>
-          <p
-            className={cn(styles.title, {
+          <p className={cn(styles.title, {
               [styles.activeTitle]: content?.key === node.key,
             })}
           >
@@ -49,8 +47,7 @@ const TreeNode: React.FC<IPropsTreeNode> = ({ node, ...common }) => {
         </div>
       </div>
       {hasChild && (
-        <div
-          className={cn(styles.innerContainer, {
+        <div className={cn(styles.innerContainer, {
             [styles.visible]: visible,
           })}
         >

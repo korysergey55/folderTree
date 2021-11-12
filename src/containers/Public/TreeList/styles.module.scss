@@ -1,12 +1,15 @@
 .containerTreeList {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 1112px;
   margin: 0 auto;
   padding: 20px 15px;
 
   .wripper {
+    display: flex;
+    flex-wrap: wrap;
     max-width: 255px;
     overflow-x: auto;
   }

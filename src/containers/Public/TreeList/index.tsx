@@ -38,8 +38,8 @@ const TreeList = () => {
       arr = [...arr, key]
     }
     setOpenedFolder(arr)
-    localStorage.setItem('openedFolders', JSON.stringify(arr))
     setContent(null)
+    localStorage.setItem('openedFolders', JSON.stringify(arr))
   }
 
   return (

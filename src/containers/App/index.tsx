@@ -4,7 +4,6 @@ import { Provider } from 'mobx-react'
 import store from 'stores'
 import history from 'utils/history'
 import PrivateRoute from 'components/PrivateRoute'
-import Loader from 'components/Loader'
 import TreeList from 'containers/Public/TreeList'
 import HomePage from 'containers/Public/HomePage'
 
@@ -17,7 +16,6 @@ const App = () => {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/folderTree" component={TreeList} />
         </Switch>
-        {/* <Loader/> */}
       </Router>
     </Provider>
   )
