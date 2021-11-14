@@ -7,7 +7,7 @@ interface IProps {
 const Content: React.FC<IProps> = ({ title = 'content' }) => {
   return (
     <div className={styles.contentContainer}>
-      <p className={styles.title}>{title}</p>
+      <h2 className={styles.title}>{title}</h2>
     </div>
   )
 }
